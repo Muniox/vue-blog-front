@@ -1,0 +1,3 @@
+https://tailwind.primevue.org/overview
+https://vee-validate.logaretm.com/v4/
+https://www.shadcn-vue.com/
