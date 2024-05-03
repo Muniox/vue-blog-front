@@ -1,0 +1,45 @@
+<script setup lang="ts">
+import Arrow from '@/assets/arrow.svg';
+import Programmer from '@/assets/programmer.svg';
+</script>
+
+<template>
+  <header class="z-30">
+    <div class="md:flex xl:mt-10 md:mt-24">
+      <div>
+        <h1 class="font-bold text-2xl text-center mt-5 md:text-left md:text-5xl xl:text-7xl">
+          JavaScript
+          <span class="block font-extralight md:text-3xl md:mt-10"> Blog o JavaScript </span>
+        </h1>
+        <p class="hidden md:block text-xl font-light md:mt-10 xl:mt-20 leading-10">
+          Node, React, Express oraz inne rzeczy powiązane z&nbsp;JavaScriptem – o&nbsp;tym piszemy
+          na naszym blogu poświęconym technologiom JS. Przedstawiamy zarówno podstawową wiedzę dla
+          początkujących, jak&nbsp;i&nbsp;bardziej zaawansowane tematy z&nbsp;zakresu JavaScript.
+        </p>
+      </div>
+      <img
+        :src="Programmer"
+        alt="Programista"
+        class="mx-auto mt-4 md:max-w-[483px] xl:max-w-none xl:min-w-[702px] xl:mt-10"
+      />
+    </div>
+    <div class="md:flex md:items-center gap-3">
+      <RouterLink to="/register">
+        <button
+          type="button"
+          class="rounded-full primary-gradient text-white px-8 py-4 font-semibold text-xl block mx-auto md:mx-0 mt-5 xl:mt-0 duration-300"
+        >
+          Zarejestruj się
+        </button>
+      </RouterLink>
+      <p class="hidden md:inline">jeśli chcesz do nas dołączyć oraz pomóc w rozwijaniu bloga.</p>
+    </div>
+    <div class="mt-5 flex justify-center">
+      <button type="button" @Click="">
+        <img :src="Arrow" alt="" class="max-w-[70px] md:max-w-[90]" />
+      </button>
+    </div>
+  </header>
+</template>
+
+<style scoped></style>
