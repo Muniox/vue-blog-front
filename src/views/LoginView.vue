@@ -2,6 +2,8 @@
 
 <template>
   <div>
-    <h1>This is an home page</h1>
+    <h1>This is an Login page</h1>
   </div>
 </template>
+
+<style scoped></style>
