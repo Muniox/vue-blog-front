@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeaderNav from '@/components/HeaderNav.vue';
+import HeaderNav from '@/components/HeaderBlog.vue';
 import Shape from '@/assets/shape.svg';
 import Glass from '@/assets/glass.svg';
 import CollapsibleList from '@/components/CollapsibleList.vue';
