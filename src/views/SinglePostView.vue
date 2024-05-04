@@ -13,10 +13,13 @@ const postsStore = usePostStore();
 await postsStore.fetchSinglePost(id);
 const post = postsStore.post;
 const postPublishTime = useDate(post?.createdAt);
+console.log(post);
+// @TODO: post nie jest nullem w przypadku błędu!
 </script>
 
 <template>
-  <div class="flex-grow mt-10">
+  <div v-if="!post">Brak posta o tym id</div>
+  <div v-else class="flex-grow mt-10">
     <div class="flex gap-5 flex-col xl:flex-row">
       <img src="/default.png" alt="główny obraz" class="order-1 xl:order-2" />
       <div class="xl:order-1 order-2 flex-grow">
@@ -25,7 +28,7 @@ const postPublishTime = useDate(post?.createdAt);
           <div class="flex flex-col">
             <p>
               Autor:
-              <span class="text-blue-400 ml-2">{{ post?.user.username }}</span>
+              <span class="text-blue-400 ml-2">{{ post?.user?.username }}</span>
             </p>
             <p>
               Opublikowano:
