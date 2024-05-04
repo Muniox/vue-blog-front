@@ -15,7 +15,7 @@ import defaultUserImg from '@/assets/deafult_author.svg';
         </p>
         <p class="font-bold hidden md:inline">
           Kategoria:
-          <span class="text-blue-400 ml-2"> {category} </span>
+          <span class="text-blue-400 ml-2"> category </span>
         </p>
       </div>
       <RouterLink to="/posts/id">
