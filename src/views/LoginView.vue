@@ -6,7 +6,7 @@ const email = defineModel('email');
 const password = defineModel('password');
 
 const handleSubmit = async () => {
-  await userStore.login(email, password);
+  await userStore.login(email.value, password.value);
   console.log(userStore.user);
 };
 </script>
@@ -27,7 +27,7 @@ const handleSubmit = async () => {
           autoComplete="off"
           name="email"
           class="w-[220px] sm:w-full text-2xl border-2 rounded-lg transition duration-200 focus:border-blue-400 focus:ring-blue-400 myNameInput myInput relative z-20 bg-transparent"
-          v-model="emailModel"
+          v-model="email"
         />
         <span
           class="text-2xl absolute left-3 top-1/2 -translate-y-1/2 transition-all duration-200 px-1 text-gray-400 input-text z-10"
@@ -45,7 +45,7 @@ const handleSubmit = async () => {
           autoComplete="off"
           name="password"
           class="w-[220px] sm:w-full text-2xl border-2 rounded-lg transition duration-200 focus:border-blue-400 focus:ring-blue-400 myPasswordInput myInput relative z-20 bg-transparent"
-          v-model="passwordModel"
+          v-model="password"
         />
         <span
           class="text-2xl absolute left-3 top-1/2 -translate-y-1/2 transition-all duration-200 px-1 text-gray-400 input-text z-10"
