@@ -1,7 +1,10 @@
 import { defineStore } from 'pinia';
+import type { Post } from '@/types/post';
 
 export const usePostStore = defineStore('post', {
-  state: () => ({
+  state: (): {
+    postList: Post[];
+  } => ({
     postList: [],
   }),
   getters: {},
