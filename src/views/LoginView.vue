@@ -2,12 +2,12 @@
 import { useUserStore } from '@/stores/userStore';
 
 const userStore = useUserStore();
+// TODO: one way binding!
 const email = defineModel('email');
 const password = defineModel('password');
 
 const handleSubmit = async () => {
   await userStore.login(email.value, password.value);
-  console.log(userStore.user);
 };
 </script>
 

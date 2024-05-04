@@ -39,8 +39,8 @@ defineProps<{ post: Post }>();
       <p
         class="mt-3 font-light leading-5 md:leading-8 text-sm post-text md:text-xl"
         v-html="post.description"
-      ></p>
-      <RouterLink to="/posts/${id}">
+      />
+      <RouterLink :to="`/posts/${post.id}`">
         <button
           type="button"
           class="rounded-full px-5 py-2 mt-3 text-blue-400 border-blue-400 border text-base md:text-xl hover:bg-blue-400 hover:text-white transition duration-300"

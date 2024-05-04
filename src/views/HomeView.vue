@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import HeaderNav from '@/components/HeaderBlog.vue';
+import HeaderBlog from '@/components/HeaderBlog.vue';
 import Shape from '@/assets/shape.svg';
 import PostComponent from '@/components/PostsComponent.vue';
 </script>
 
 <template>
-  <HeaderNav />
+  <HeaderBlog />
   <img
     :src="Shape"
     alt="decoration shape"

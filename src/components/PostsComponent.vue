@@ -1,14 +1,7 @@
 <script setup lang="ts">
 import Glass from '@/assets/glass.svg';
 import CollapsibleList from '@/components/CollapsibleList.vue';
-import SinglePost from '@/components/SinglePost.vue';
 import PostsList from '@/components/PostsList.vue';
-// import { usePostStore } from '@/stores/postStore';
-
-// const postsStore = usePostStore();
-// await postsStore.fetchPosts();
-//
-// console.log(postsStore.postList);
 </script>
 
 <template>
