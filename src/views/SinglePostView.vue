@@ -2,6 +2,17 @@
 import Delete from '@/assets/delete.png';
 import defaultUserImage from '@/assets/deafult_author.svg';
 import Edit from '@/assets/edit.png';
+import { usePostStore } from '@/stores/postStore';
+import { useRoute } from 'vue-router';
+import { useDate } from '@/composable/date-fns.composable';
+
+const route = useRoute();
+const id = route.params.id;
+
+const postsStore = usePostStore();
+await postsStore.fetchSinglePost(id);
+const post = postsStore.post;
+const postPublishTime = useDate(post?.createdAt);
 </script>
 
 <template>
@@ -14,15 +25,15 @@ import Edit from '@/assets/edit.png';
           <div class="flex flex-col">
             <p>
               Autor:
-              <span class="text-blue-400 ml-2">{post.author}</span>
+              <span class="text-blue-400 ml-2">{{ post?.user.username }}</span>
             </p>
             <p>
               Opublikowano:
-              <span class="text-blue-400 ml-2">{postPublishTime}</span>
+              <span class="text-blue-400 ml-2">{{ postPublishTime }}</span>
             </p>
           </div>
         </div>
-        <h1 class="text-xl md:text-5xl my-10 font-semibold hidden xl:block">{post.title}</h1>
+        <h1 class="text-xl md:text-5xl my-10 font-semibold hidden xl:block">{{ post?.title }}</h1>
         {currentUser ? currentUser.name === post.author && (
         <div class="flex gap-10 mt-10">
           <RouterLink to="/write?edit=${post.id}">

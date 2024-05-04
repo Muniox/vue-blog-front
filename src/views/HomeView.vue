@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import HeaderBlog from '@/components/HeaderBlog.vue';
 import Shape from '@/assets/shape.svg';
-import PostComponent from '@/components/PostsComponent.vue';
+import PostsSection from '@/components/PostsSection.vue';
 </script>
 
 <template>
@@ -11,5 +11,5 @@ import PostComponent from '@/components/PostsComponent.vue';
     alt="decoration shape"
     class="absolute top-32 right-1/2 translate-x-1/2 z-10 hidden xl:inline w-[1400px]"
   />
-  <PostComponent />
+  <PostsSection />
 </template>

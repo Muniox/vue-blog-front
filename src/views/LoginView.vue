@@ -16,25 +16,26 @@ const handleSubmit = async () => {
     <h1 class="text-4xl">Logowanie</h1>
     <form
       @submit.prevent="handleSubmit"
-      class="flex mt-6 gap-10 justify-center items-center flex-col"
+      class="flex mt-6 gap-10 justify-center items-center flex-col bg-inherit bg-white"
     >
-      <label for="email" class="relative border-amber-400">
+      <div class="relative bg-inherit">
         <input
           required
           type="email"
           id="email"
-          placeholder=" "
           autoComplete="off"
           name="email"
-          class="w-[220px] sm:w-full text-2xl border-2 rounded-lg transition duration-200 focus:border-blue-400 focus:ring-blue-400 myNameInput myInput relative z-20 bg-transparent"
+          placeholder="Email"
+          class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-rose-600"
           v-model="email"
         />
-        <span
-          class="text-2xl absolute left-3 top-1/2 -translate-y-1/2 transition-all duration-200 px-1 text-gray-400 input-text z-10"
+        <label
+          for="email"
+          class="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all"
         >
           Email
-        </span>
-      </label>
+        </label>
+      </div>
 
       <label for="password" class="relative border-amber-400">
         <input

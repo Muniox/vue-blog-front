@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import defaultUserImg from '@/assets/deafult_author.svg';
 import type { Post } from '@/types/post';
+import { useDate } from '@/composable/date-fns.composable';
 
-defineProps<{ post: Post }>();
+const props = defineProps<{ post: Post }>();
+const postPublishTime = useDate(props.post.createdAt);
 </script>
 
 <template>
@@ -14,14 +16,14 @@ defineProps<{ post: Post }>();
       <div class="flex gap-8 mt-4 w-full xl:mt-0">
         <p class="font-bold hidden md:inline">
           Opublikowane:
-          <span class="text-blue-400 ml-2">{{ post.createdAt }}</span>
+          <span class="text-blue-400 ml-2">{{ postPublishTime }}</span>
         </p>
         <p class="font-bold hidden md:inline">
           Kategoria:
           <span class="text-blue-400 ml-2">{{ post.category }}</span>
         </p>
       </div>
-      <RouterLink :to="`/posts/${post.id}`">
+      <RouterLink :to="`/post/${post.id}`">
         <h2
           class="text-base font-semibold md:font-light mt-2 leading-5 md:leading-8 md:text-3xl hover:text-blue-400"
         >
@@ -40,7 +42,7 @@ defineProps<{ post: Post }>();
         class="mt-3 font-light leading-5 md:leading-8 text-sm post-text md:text-xl"
         v-html="post.description"
       />
-      <RouterLink :to="`/posts/${post.id}`">
+      <RouterLink :to="`/post/${post.id}`">
         <button
           type="button"
           class="rounded-full px-5 py-2 mt-3 text-blue-400 border-blue-400 border text-base md:text-xl hover:bg-blue-400 hover:text-white transition duration-300"
