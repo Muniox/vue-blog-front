@@ -1,6 +1,9 @@
 import { defineStore } from 'pinia';
 import type { Post } from '@/types/post';
+import { useToast } from 'vue-toastification';
 
+const toast = useToast();
+// https://dev.to/dionarodrigues/fetch-api-do-you-really-know-how-to-handle-errors-2gj0
 export const usePostStore = defineStore('post', {
   state: (): {
     postList: Post[];
@@ -12,16 +15,38 @@ export const usePostStore = defineStore('post', {
   getters: {},
   actions: {
     async fetchPosts() {
-      const response = await fetch('https://nest-blog.truemuniox.usermd.net/post', {
-        credentials: 'include',
-      });
-      this.postList = await response.json();
+      try {
+        const response = await fetch('https://nest-blog.truemuniox.usermd.net/post', {
+          credentials: 'include',
+        });
+        const data = await response.json();
+        if (!response.ok && data.statusCode === 500) {
+          toast.error(data.message); //error from server
+        }
+        if (!response.ok && data.statusCode !== 500) {
+          toast.warning(data.message); //error from server
+        }
+        this.postList = await data;
+      } catch (error) {
+        toast.error('Failed to get data');
+      }
     },
     async fetchSinglePost(postId: string | string[]) {
-      const response = await fetch(`https://nest-blog.truemuniox.usermd.net/post/${postId}`, {
-        credentials: 'include',
-      });
-      this.post = await response.json();
+      try {
+        const response = await fetch(`https://nest-blog.truemuniox.usermd.net/post/${postId}`, {
+          credentials: 'include',
+        });
+        const data = await response.json();
+        if (!response.ok && data.statusCode === 500) {
+          toast.error(data.message); //error from server
+        }
+        if (!response.ok && data.statusCode !== 500) {
+          toast.warning(data.message); //error from server
+        }
+        this.post = await data;
+      } catch (error: any) {
+        toast.error('Failed to get data');
+      }
     },
   },
 });

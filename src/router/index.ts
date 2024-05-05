@@ -32,7 +32,7 @@ const router = createRouter({
     {
       path: '/write',
       name: 'write',
-      component: () => import('../views/WritPostView.vue'),
+      component: () => import('../views/WritePostView.vue'),
     },
   ],
 });
