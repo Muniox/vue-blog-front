@@ -1,13 +1,24 @@
 <script setup lang="ts">
 import { useUserStore } from '@/stores/userStore';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const userStore = useUserStore();
-// TODO: one way binding!
+
+// TODO: one way binding!??
 const email = defineModel('email');
 const password = defineModel('password');
 
 const handleSubmit = async () => {
-  await userStore.login(email.value, password.value);
+  try {
+    await userStore.login(email.value, password.value);
+    if (userStore.isLoggedIn && userStore.user) {
+      await router.push('/');
+    }
+  } catch (error) {
+    // TODO: to tutaj powinienem dać toast?
+    console.log(error);
+  }
 };
 </script>
 

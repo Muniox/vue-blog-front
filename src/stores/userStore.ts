@@ -1,11 +1,18 @@
 import { defineStore } from 'pinia';
 import { useToast } from 'vue-toastification';
+// import { useStorage } from '@vueuse/core';
 
 const toast = useToast();
+// const store = useStorage('user-storage', null, localStorage);
+
 // https://dev.to/dionarodrigues/fetch-api-do-you-really-know-how-to-handle-errors-2gj0
 export const useUserStore = defineStore('user', {
-  state: () => ({
-    user: {},
+  state: (): {
+    user: string | null;
+    isLoggedIn: boolean;
+  } => ({
+    user: '',
+    isLoggedIn: false,
   }),
   getters: {},
   actions: {
@@ -27,7 +34,11 @@ export const useUserStore = defineStore('user', {
         if (!response.ok && data.statusCode !== 500) {
           toast.warning(data.message); //error from server
         }
-        this.user = await data;
+        if (response.ok) {
+          localStorage.setItem('user-storage', JSON.stringify(this.user));
+          this.user = localStorage.getItem('user-storage');
+          this.isLoggedIn = true;
+        }
       } catch (error) {
         toast.error('Failed to login');
       }
