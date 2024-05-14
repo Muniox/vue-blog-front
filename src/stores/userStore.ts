@@ -33,7 +33,7 @@ export const useUserStore = defineStore('user', {
           // toast.error(data.message); //error from server
           throw new Error('Oops something went wrong!');
         }
-        if (data.statusCode === 401) {
+        if (!response.ok && data.statusCode === 401) {
           // toast.warning(data.message); //error from server
           throw new Error(data.message);
         }
