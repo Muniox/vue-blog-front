@@ -1,16 +1,17 @@
 import { defineStore } from 'pinia';
 import type { Post } from '@/types/post';
 import { useToast } from 'vue-toastification';
+import { type Ref, ref } from 'vue';
 
 const toast = useToast();
 // https://dev.to/dionarodrigues/fetch-api-do-you-really-know-how-to-handle-errors-2gj0
 export const usePostStore = defineStore('post', {
   state: (): {
-    postList: Post[];
-    post: Post | null;
+    postList: Ref<Post[]>;
+    post: Ref<Post | null>;
   } => ({
-    postList: [],
-    post: null,
+    postList: ref([]),
+    post: ref(null),
   }),
   getters: {},
   actions: {
