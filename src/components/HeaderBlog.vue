@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import Arrow from '@/assets/arrow.svg';
 import Programmer from '@/assets/programmer.svg';
+
+const handleClickScroll = () => {
+  const element = document.getElementById('menu');
+  if (element) {
+    // 👇 Will scroll smoothly to the top of the next section
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 </script>
 
 <template>
@@ -35,7 +43,7 @@ import Programmer from '@/assets/programmer.svg';
       <p class="hidden md:inline">jeśli chcesz do nas dołączyć oraz pomóc w rozwijaniu bloga.</p>
     </div>
     <div class="mt-5 flex justify-center">
-      <button type="button" @Click="">
+      <button type="button" @click="handleClickScroll">
         <img :src="Arrow" alt="" class="max-w-[70px] md:max-w-[90]" />
       </button>
     </div>

@@ -7,7 +7,10 @@ import NavbarBlog from '@/components/NavbarBlog.vue';
 <template>
   <div class="container mx-auto fix-min-h-screen max-w-screen-xl p-2.5 flex flex-col md:p-5">
     <NavbarBlog />
-    <RouterView />
+    <suspense>
+      <RouterView />
+    </suspense>
+
     <FooterBlog />
   </div>
 </template>
